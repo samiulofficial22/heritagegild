@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeritageGild - Buy Gold & Start Mining for Greater Opportunities</title>
+    <meta name="description" content="HeritageGild - Premium gold investment platform. Buy gold and start mining for greater opportunities.">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500&family=Crete+Round:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <div class="navbar-brand-wrapper">
+                <a class="navbar-brand" href="#home">
+                    <img src="assets/images/logo.svg" alt="HeritageGild Logo" class="navbar-logo">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-text">Menu</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="nav-links-container mx-auto">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#why-choose-us">Why Choose Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pricing">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-cta-wrapper">
+                    <div class="navbar-cta">
+                        <a href="#register" class="btn btn-register">Register</a>
+                        <a href="#dashboard" class="btn btn-dashboard">
+                            <i class="fas fa-desktop"></i>
+                            <span>Open dashboard</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero and Dashboard Wrapper -->
+    <div class="hero-dashboard-wrapper">
+        <div class="hero-dashboard-bg"></div>
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+                    <div class="col-lg-10 col-xl-8">
+                        <div class="hero-content text-center">
+                            <h1 class="hero-title fade-in-up">
+                                Buy gold and start mining for<br>
+                                greater opportunities.
+                            </h1>
+                            <p class="hero-subtitle fade-in-up">
+                                Trust in our expertise and enjoy monthly profits from mining.<br>
+                                We generate consistent returns through physical gold and forex trading.
+                            </p>
+                            <div class="hero-buttons fade-in-up">
+                                <a href="#how-it-works" class="btn btn-white-cta">
+                                    How it Work <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <a href="#pricing" class="btn btn-dark-cta">
+                                    Investment <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Preview Section -->
+        <section id="dashboard" class="dashboard-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="dashboard-preview fade-in">
+                            <img src="assets/images/bg-db.png" alt="HeritageGild Dashboard" class="img-fluid dashboard-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Gold Price Chart Section -->
+    <section class="gold-price-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">Check Today's <br> Gold Price Instantly</h2>
+                        <p class="section-subtitle">Stay updated with real-time gold prices and <br> calculate your investment with ease.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-lg-6">
+                    <div class="gold-card-calculator-wrap p-5">
+                        <div class="gold-calculator-card fade-in-left mx-auto w-75">
+                            <div class="gold-rate-section">
+                                <div class="gold-rate-header">
+                                    <label class="gold-rate-label">Gold Rate in USD</label>
+                                    <div class="gold-price-display">
+                                        <div class="price-label">Price</div>
+                                        
+                                    </div>
+                                </div>
+                                <input type="range" class="gold-rate-slider" id="goldRateSlider" min="100" max="150" value="120">
+                                <div class="gold-karat-section d-flex justify-content-between">
+                                    <div class="gold-karat">24k</div>
+                                    <div class="price-value">$120</div>
+                                </div>
+                            </div>
+                            <div class="weight-section">
+                                <label class="weight-label">Weight (Grams)</label>
+                                <div class="weight-display" id="weightDisplay">00 g</div>
+                                <div class="weight-control-wrapper">
+                                    <button class="weight-toggle-btn" id="weightToggle">
+                                        <i class="fas fa-chevron-up"></i>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="total-value-section">
+                                <label class="total-label">Your Total Value (USD)</label>
+                                <div class="total-value-display" id="totalValueDisplay">$00.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="chart-card fade-in-right">
+                        <div class="chart-container">
+                            <img src="assets/images/live-market-update.png" alt="Live Market Updates Chart" class="img-fluid chart-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About HeritageGild Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <!-- Top Section: Title and Description -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">About HeritageGild</h2>
+                        <p class="section-subtitle">
+                            HeritageGild.com is a modern and trusted platform that combines wealth creation with social responsibility. Our mission is to provide secure, efficient, and profitable investment opportunities for our users. We achieve this through four core areas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Section: Dashboard and Core Areas -->
+            <div class="row g-4 mt-4">
+                <!-- Left Side: Dashboard Image -->
+                <div class="col-lg-6">
+                    <div class="about-dashboard-image fade-in-left">
+                        <img src="assets/images/about-heritagegild.webp" alt="HeritageGild Dashboard" class="img-fluid about-dashboard-img">
+                    </div>
+                </div>
+                
+                <!-- Right Side: Four Core Areas -->
+                <div class="col-lg-6">
+                    <div class="core-areas-container fade-in-right">
+                        <div class="core-area-card">
+                            <div class="core-area-icon">
+                                <img src="assets/images/tick-circle.webp" alt="Check Icon" class="tick-icon">
+                            </div>
+                            <h4 class="core-area-title">Gold Mining</h4>
+                            <p class="core-area-description">Utilizing advanced technology and expertise, we manage high-quality gold mining projects. Our operations are transparent and secure, helping our users build lasting value through tangible assets.</p>
+                        </div>
+                        <div class="core-area-card">
+                            <div class="core-area-icon">
+                                <img src="assets/images/tick-circle.webp" alt="Check Icon" class="tick-icon">
+                            </div>
+                            <h4 class="core-area-title">HTG Coin (Cryptocurrency)</h4>
+                            <p class="core-area-description">Our native digital currency, HTG Coin, empowers users to participate in the modern crypto ecosystem. It enhances the efficiency and security of our financial network.</p>
+                        </div>
+                        <div class="core-area-card">
+                            <div class="core-area-icon">
+                                <img src="assets/images/tick-circle.webp" alt="Check Icon" class="tick-icon">
+                            </div>
+                            <h4 class="core-area-title">Provident Fund</h4>
+                            <p class="core-area-description">HeritageGild's Provident Fund offers long-term financial security to investors. It is a structured, transparent, and reliable savings plan designed to provide confidence for the future.</p>
+                        </div>
+                        <div class="core-area-card">
+                            <div class="core-area-icon">
+                                <img src="assets/images/tick-circle.webp" alt="Check Icon" class="tick-icon">
+                            </div>
+                            <h4 class="core-area-title">Donations & Social Initiatives</h4>
+                            <p class="core-area-description">We believe true success is measured not only by individual gain but also by positive social impact. HeritageGild actively supports meaningful charitable and community initiatives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Satisfaction Section -->
+    <section class="satisfaction-section">
+        <div class="container">
+            <div class="row g-0">
+                <!-- Left Section: 3 boxes -->
+                <div class="col-lg-8">
+                    <div class="row g-0">
+                        <!-- Top-Left: Risk-Free Investment (Full Width) -->
+                        <div class="col-12">
+                            <div class="satisfaction-card satisfaction-card-large fade-in-left risk-free-card">
+                                <div class="satisfaction-card-inner">
+                                    <img src="assets/images/customer-1.webp" alt="Risk-Free Investment" class="card-overlay-image">
+                                    <div class="card-text-content">
+                                        <h3 class="satisfaction-card-title">Risk-Free Investment</h3>
+                                        <p class="satisfaction-card-text">
+                                            At HeritageGild, we prioritize your financial safety. Our strategies are designed to minimize risk while maximizing potential returns, allowing you to grow your wealth with confidence and peace of mind. Optional shorter tagline: Risk-Free. Secure. Confident Investing with HeritageGild.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom-Left: Investment Assurance -->
+                        <div class="col-6">
+                            <div class="satisfaction-card satisfaction-card-small fade-in-left assurance-card">
+                                <div class="satisfaction-card-inner">
+                                    <img src="assets/images/customer-2.webp" alt="Investment Assurance" class="card-overlay-image">
+                                    <div class="card-text-content">
+                                        <h3 class="satisfaction-card-title">Investment Assurance</h3>
+                                        <p class="satisfaction-card-text">
+                                            At HeritageGild, your investments are our top priority. We ensure complete transparency, security, and reliability so you can invest with confidence and peace of mind.” Optional shorter tagline: “Invest with Confidence – Secured and Assured by HeritageGild
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom-Right: 25,000+ Customers -->
+                        <div class="col-6">
+                            <div class="satisfaction-card satisfaction-card-small fade-in-right customers-card">
+                                <div class="satisfaction-card-inner">
+                                    <img src="assets/images/customer-3.webp" alt="25,000+ Customers" class="card-overlay-image">
+                                    <div class="card-text-content">
+                                        <h3 class="satisfaction-card-title">25,000+ Customers</h3>
+                                        <p class="satisfaction-card-text">
+                                            There’s a reason so many customers trust us, keep coming back and refer their contacts.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Section: Customer Satisfaction (Tall Box ) -->
+                <div class="col-lg-4">
+                    <div class="satisfaction-card satisfaction-card-tall satisfaction-card-blue-border fade-in-right customer-satisfaction-card">
+                        <div class="satisfaction-card-inner">
+                            <img src="assets/images/customer-4.webp" alt="Customer Satisfaction" class="card-overlay-image">
+                            <div class="card-text-content card-text-top">
+                                <h3 class="satisfaction-card-title">Customer Satisfaction</h3>
+                                <p class="satisfaction-card-text">
+                                    At HeritageGild, your satisfaction is our ultimate goal. We are committed to providing exceptional service, personalized support, and a seamless investment experience that exceeds your expectations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section (Carousel) -->
+    <section id="why-choose-us" class="why-choose-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">Why Choose <span class="text-gold">Us</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="why-choose-slider-container">
+                        <!-- Slider Content Area -->
+                        <div class="why-choose-slider-wrapper">
+                            <div class="carousel-slides" id="whyChooseSlides">
+                                <!-- Slide 1 -->
+                                <div class="carousel-slide active" data-slide="0">
+                                    <div class="slide-image-container">
+                                        <img src="assets/images/why-1.webp" alt="Why Choose HeritageGild" class="slide-main-image">
+                                    </div>
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="carousel-slide" data-slide="1">
+                                    <div class="slide-image-container">
+                                        <img src="assets/images/why-2.jpg" alt="Secure Investment" class="slide-main-image">
+                                    </div>
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="carousel-slide" data-slide="2">
+                                    <div class="slide-image-container">
+                                        <img src="assets/images/why-3.jpg" alt="High Returns" class="slide-main-image">
+                                    </div>
+                                </div>
+                                <!-- Slide 4 -->
+                                <div class="carousel-slide" data-slide="3">
+                                    <div class="slide-image-container">
+                                        <img src="assets/images/why-4.jpg" alt="Expert Trading" class="slide-main-image">
+                                    </div>
+                                </div>
+                                <!-- Slide 5 -->
+                                <div class="carousel-slide" data-slide="4">
+                                    <div class="slide-image-container">
+                                        <img src="assets/images/why-5.jpg" alt="Customer Support" class="slide-main-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Tabs with Content Boxes -->
+                        <div class="why-choose-navigation">
+                            <div class="nav-tabs-container">
+                                <div class="nav-tabs-line">
+                                    <div class="nav-tabs-line-segment active" data-segment="0"></div>
+                                    <div class="nav-tabs-line-segment" data-segment="1"></div>
+                                    <div class="nav-tabs-line-segment" data-segment="2"></div>
+                                    <div class="nav-tabs-line-segment" data-segment="3"></div>
+                                    <div class="nav-tabs-line-segment" data-segment="4"></div>
+                                </div>
+                                <div class="nav-tabs" id="navTabs">
+                                    <button class="nav-tab active" data-tab="0">
+                                        <span class="nav-tab-number">01</span>
+                                        <img src="assets/images/why-mobile-1.png" alt="Why Choose HeritageGild" class="nav-tab-mobile-image">
+                                        <div class="slide-content-box">
+                                            <h3 class="slide-content-title">Why Choose HeritageGild for Your Investments?</h3>
+                                            <p class="slide-content-text">Why Choose HeritageGild? “Secure, transparent, and customer-focused – your investments grow with confidence.</p>
+                                        </div>
+                                    </button>
+                                    <button class="nav-tab" data-tab="1">
+                                        <span class="nav-tab-number">02</span>
+                                        <img src="assets/images/why-mobile-1.png" alt="Secure Investment" class="nav-tab-mobile-image">
+                                        <div class="slide-content-box">
+                                            <h3 class="slide-content-title">Why Work on Mining with HeritageGild?</h3>
+                                            <p class="slide-content-text">Join HeritageGild mining to earn Sponsor and Generation Commissions, enjoy multiple income streams, and be part of a growing, rewarding network.</p>
+                                        </div>
+                                    </button>
+                                    <button class="nav-tab" data-tab="2">
+                                        <span class="nav-tab-number">03</span>
+                                        <img src="assets/images/why-mobile-1.png" alt="High Returns" class="nav-tab-mobile-image">
+                                        <div class="slide-content-box">
+                                            <h3 class="slide-content-title">Why Buy HTGCoin?</h3>
+                                            <p class="slide-content-text">HTGCoin offers secure, high-potential, and transparent investment opportunities, empowering you to grow your wealth with confidence.</p>
+                                        </div>
+                                    </button>
+                                    <button class="nav-tab" data-tab="3">
+                                        <span class="nav-tab-number">04</span>
+                                        <img src="assets/images/why-mobile-1.png" alt="Expert Trading" class="nav-tab-mobile-image">
+                                        <div class="slide-content-box">
+                                            <h3 class="slide-content-title">Why Invest in a Provident Fund?</h3>
+                                            <p class="slide-content-text">Investing in a provident fund ensures long-term financial security, steady growth of your savings, and a reliable source of funds for the future. It’s a disciplined way to plan for retirement while enjoying tax benefits and peace of mind.</p>
+                                        </div>
+                                    </button>
+                                    <button class="nav-tab" data-tab="4">
+                                        <span class="nav-tab-number">05</span>
+                                        <img src="assets/images/why-mobile-1.png" alt="Customer Support" class="nav-tab-mobile-image">
+                                        <div class="slide-content-box">
+                                            <h3 class="slide-content-title">Why Make a Donation?</h3>
+                                            <p class="slide-content-text">Donating helps support meaningful causes, creates positive impact, and empowers communities in need. Your contribution can make a real difference and bring hope to those who need it most.</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="pricing-table-wrapper mt-5">
+                <table class="pricing-comparison-table">
+                    <thead>
+                        <tr>
+                            <th class="feature-header-cell">
+                                <h3 class="feature-header-title">Feature Name</h3>
+                                <p class="investment-ranges">Investment Range</p>
+                            </th>
+                            <th class="plan-header-cell plan-starter">
+                                <h3 class="plan-title">Starter Plan</h3>
+                                <div class="plan-range">$100 - $999</div>
+                                <a href="#dashboard" class="btn btn-plan-action">Start Investing</a>
+                            </th>
+                            <th class="plan-header-cell">
+                                <h3 class="plan-title">Investor Plan</h3>
+                                <div class="plan-range">$1,000 - $9,999</div>
+                                <a href="#dashboard" class="btn btn-plan-action">Invest Now</a>
+                            </th>
+                            <th class="plan-header-cell plan-premium">
+                                <h3 class="plan-title">Premium Plan</h3>
+                                <div class="plan-range">$10,000 - $24,999</div>
+                                <a href="#dashboard" class="btn btn-plan-action">Upgrade to Premium</a>
+                            </th>
+                            <th class="plan-header-cell plan-founder">
+                                <h3 class="plan-title">Founder Plan</h3>
+                                <div class="plan-range">$25,000+</div>
+                                <a href="#dashboard" class="btn btn-plan-action">Start Investing</a>
+                            </th>
+                            <th class="plan-header-cell plan-starter">
+                                <h3 class="plan-title">Starter Plan</h3>
+                                <div class="plan-range">$100 - $999</div>
+                                <a href="#dashboard" class="btn btn-plan-action">Start Investing</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-row">Monthly ROI</td>
+                            <td class="plan-feature-cell plan-starter">10-15%</td>
+                            <td class="plan-feature-cell">10-15%</td>
+                            <td class="plan-feature-cell plan-premium">12-15%</td>
+                            <td class="plan-feature-cell plan-founder">10-15%</td>
+                            <td class="plan-feature-cell plan-starter">10-15%</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Gold Trading Type</td>
+                            <td class="plan-feature-cell plan-starter">Spot gold buy & instant sell</td>
+                            <td class="plan-feature-cell">Spot gold buy & instant sell</td>
+                            <td class="plan-feature-cell plan-premium">Spot gold buy & instant sell</td>
+                            <td class="plan-feature-cell plan-founder">Spot gold buy & instant sell</td>
+                            <td class="plan-feature-cell plan-starter">Spot gold buy & instant sell</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Referral Income</td>
+                            <td class="plan-feature-cell plan-starter">5%</td>
+                            <td class="plan-feature-cell">5%</td>
+                            <td class="plan-feature-cell plan-premium">6%</td>
+                            <td class="plan-feature-cell plan-founder">6%</td>
+                            <td class="plan-feature-cell plan-starter">5%</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Generation Income (15 Levels)</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell">Total 50%</td>
+                            <td class="plan-feature-cell plan-premium">Total 50%</td>
+                            <td class="plan-feature-cell plan-founder">Total 50%</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Active Referral Requirement</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell">2 per level (30 total)</td>
+                            <td class="plan-feature-cell plan-premium">2 per level (30 total)</td>
+                            <td class="plan-feature-cell plan-founder">2 per level (30 total)</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Founder Bonus</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell plan-premium">Eligible</td>
+                            <td class="plan-feature-cell plan-founder">5% of total monthly profit</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">HTG Coin Staking Package</td>
+                            <td class="plan-feature-cell plan-starter">Optional</td>
+                            <td class="plan-feature-cell">Optional</td>
+                            <td class="plan-feature-cell plan-premium">$120 = 12,000C (1-year lock)</td>
+                            <td class="plan-feature-cell plan-founder">Included</td>
+                            <td class="plan-feature-cell plan-starter">Optional</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Staking ROI (After 1 Year)</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell plan-premium">2x-5x</td>
+                            <td class="plan-feature-cell plan-founder">2x-5x</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Referral from Staking</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell plan-premium">10%</td>
+                            <td class="plan-feature-cell plan-founder">10%</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Provident Fund</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell">Optional</td>
+                            <td class="plan-feature-cell plan-premium">5% of income, withdraw every 3 months</td>
+                            <td class="plan-feature-cell plan-founder">5% of income, withdraw every 3 months</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Charity Option</td>
+                            <td class="plan-feature-cell plan-starter">Optional ($10 min)</td>
+                            <td class="plan-feature-cell">Optional ($10 min)</td>
+                            <td class="plan-feature-cell plan-premium">Optional ($10 min)</td>
+                            <td class="plan-feature-cell plan-founder">Required (min $10)</td>
+                            <td class="plan-feature-cell plan-starter">Optional ($10 min)</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Rank Access</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell">Up to 3 Star</td>
+                            <td class="plan-feature-cell plan-premium">Up to 6 Star</td>
+                            <td class="plan-feature-cell plan-founder">Up to 7 Star</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Rank Salary & Rewards</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                            <td class="plan-feature-cell">Based on star level</td>
+                            <td class="plan-feature-cell plan-premium">Based on star level</td>
+                            <td class="plan-feature-cell plan-founder">Full reward access (1-7 Star)</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/cross-circle.png" alt="Not included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Dashboard & Calculator Access</td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/green-tick-circle.png" alt="Included" class="feature-icon"></td>
+                            <td class="plan-feature-cell"><img src="assets/images/green-tick-circle.png" alt="Included" class="feature-icon"></td>
+                            <td class="plan-feature-cell plan-premium"><img src="assets/images/green-tick-circle.png" alt="Included" class="feature-icon"></td>
+                            <td class="plan-feature-cell plan-founder"><img src="assets/images/green-tick-circle.png" alt="Included" class="feature-icon"></td>
+                            <td class="plan-feature-cell plan-starter"><img src="assets/images/green-tick-circle.png" alt="Included" class="feature-icon"></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Withdrawal Access</td>
+                            <td class="plan-feature-cell plan-starter">Anytime</td>
+                            <td class="plan-feature-cell">Anytime</td>
+                            <td class="plan-feature-cell plan-premium">Anytime</td>
+                            <td class="plan-feature-cell plan-founder">Anytime</td>
+                            <td class="plan-feature-cell plan-starter">Anytime</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-row">Badge / Tagline</td>
+                            <td class="plan-feature-cell plan-starter">Perfect for beginners</td>
+                            <td class="plan-feature-cell">Build your gold portfolio</td>
+                            <td class="plan-feature-cell plan-premium">Most Popular</td>
+                            <td class="plan-feature-cell plan-founder">Exclusive Access</td>
+                            <td class="plan-feature-cell plan-starter">Perfect for beginners</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-content text-center fade-in">
+                        <div class="payment-methods">
+                            <div class="payment-method-btn">
+                                <img src="assets/images/visa.png" alt="VISA" class="payment-icon">
+                            </div>
+                            <div class="payment-method-btn">
+                                <img src="assets/images/ms-card.png" alt="Mastercard" class="payment-icon">
+                            </div>
+                            <div class="payment-method-btn">
+                                <img src="assets/images/bitcoin.png" alt="Bitcoin" class="payment-icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="footer-brand">
+                        <a href="#home" class="footer-logo">
+                            <img src="assets/images/footer-logo.png" alt="HeritageGild Logo" class="footer-logo-img">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-nav">
+                        <h5 class="footer-title">Navigation</h5>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#why-choose-us">Why choose us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-contact">
+                        <h5 class="footer-title">Contact</h5>
+                        <ul class="footer-links">
+                            <li>
+                                <div class="social-links">
+                                    <a href="#" aria-label="Twitter"><img src="assets/images/twitter.png" alt="Twitter" class="social-icon"></a>
+                                    <a href="#" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram" class="social-icon"></a>
+                                    <a href="#" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube" class="social-icon"></a>
+                                    <a href="#" aria-label="Telegram"><img src="assets/images/telegram.png" alt="Telegram" class="social-icon"></a>
+                                    <a href="#" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook" class="social-icon"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="mailto:support@heritagegild.com">
+                                    support@heritagegild.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-bottom">
+                        <p>&copy; Copyright 2025 by HeritageGild</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

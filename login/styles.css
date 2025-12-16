@@ -1,0 +1,456 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: #000000;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Left Background Section with Animated Glow */
+.background-section {
+    flex: 1;
+    position: relative;
+    background: #000000;
+    overflow: hidden;
+}
+
+.glow-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.glow-segment {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.9;
+}
+
+/* Top bulbous end - upper left */
+.segment-1 {
+    width: 300px;
+    height: 300px;
+    top: 5%;
+    left: 10%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 220, 0, 1) 0%,
+        rgba(255, 200, 0, 0.8) 30%,
+        rgba(255, 180, 0, 0.6) 50%,
+        rgba(255, 160, 0, 0.4) 70%,
+        transparent 100%
+    );
+    animation: glowPulse1 6s ease-in-out infinite;
+}
+
+/* Upper curve section */
+.segment-2 {
+    width: 400px;
+    height: 250px;
+    top: 15%;
+    left: 20%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 210, 0, 0.9) 0%,
+        rgba(255, 190, 0, 0.7) 25%,
+        rgba(255, 170, 0, 0.5) 45%,
+        rgba(255, 150, 0, 0.3) 65%,
+        transparent 85%
+    );
+    border-radius: 50%;
+    transform: rotate(-25deg);
+    animation: glowPulse2 7s ease-in-out infinite;
+}
+
+/* Middle widened section */
+.segment-3 {
+    width: 500px;
+    height: 350px;
+    top: 35%;
+    left: 15%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 215, 0, 1) 0%,
+        rgba(255, 195, 0, 0.8) 20%,
+        rgba(255, 175, 0, 0.6) 40%,
+        rgba(255, 155, 0, 0.4) 60%,
+        rgba(255, 135, 0, 0.2) 75%,
+        transparent 90%
+    );
+    border-radius: 50%;
+    transform: rotate(15deg);
+    animation: glowPulse3 8s ease-in-out infinite;
+}
+
+/* Lower curve section */
+.segment-4 {
+    width: 400px;
+    height: 280px;
+    top: 55%;
+    left: 25%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 200, 0, 0.9) 0%,
+        rgba(255, 180, 0, 0.7) 25%,
+        rgba(255, 160, 0, 0.5) 45%,
+        rgba(255, 140, 0, 0.3) 65%,
+        transparent 85%
+    );
+    border-radius: 50%;
+    transform: rotate(35deg);
+    animation: glowPulse4 7s ease-in-out infinite;
+}
+
+/* Bottom tapered end - lower right */
+.segment-5 {
+    width: 280px;
+    height: 280px;
+    top: 70%;
+    left: 35%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 210, 0, 0.95) 0%,
+        rgba(255, 190, 0, 0.75) 30%,
+        rgba(255, 170, 0, 0.55) 50%,
+        rgba(255, 150, 0, 0.35) 70%,
+        transparent 100%
+    );
+    animation: glowPulse5 6s ease-in-out infinite;
+}
+
+/* Animations for organic, flowing movement */
+@keyframes glowPulse1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.85;
+    }
+    50% {
+        transform: translate(20px, 30px) scale(1.1);
+        opacity: 0.95;
+    }
+}
+
+@keyframes glowPulse2 {
+    0%, 100% {
+        transform: rotate(-25deg) translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: rotate(-20deg) translate(15px, 20px) scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+@keyframes glowPulse3 {
+    0%, 100% {
+        transform: rotate(15deg) translate(0, 0) scale(1);
+        opacity: 0.9;
+    }
+    33% {
+        transform: rotate(20deg) translate(-10px, 15px) scale(1.08);
+        opacity: 1;
+    }
+    66% {
+        transform: rotate(10deg) translate(10px, -10px) scale(0.95);
+        opacity: 0.85;
+    }
+}
+
+@keyframes glowPulse4 {
+    0%, 100% {
+        transform: rotate(35deg) translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: rotate(40deg) translate(-15px, 25px) scale(1.06);
+        opacity: 0.9;
+    }
+}
+
+@keyframes glowPulse5 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.85;
+    }
+    50% {
+        transform: translate(-20px, -15px) scale(1.1);
+        opacity: 0.95;
+    }
+}
+
+/* Right Login Section */
+.login-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    padding: 40px;
+    min-width: 500px;
+}
+
+.login-panel {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Logo and Brand */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    font-family: 'Georgia', serif;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+.login-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+/* Form Styles */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+    color: #666666;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    background: #1f1f1f;
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: #FFD700;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Access Account Button */
+.access-button {
+    width: 100%;
+    padding: 16px;
+    background: #FFD700;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.access-button:hover {
+    background: #FFC700;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.access-button:active {
+    transform: translateY(0);
+}
+
+/* Social Login Section */
+.social-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.social-text {
+    font-size: 14px;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.social-btn {
+    width: 48px;
+    height: 48px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+    transform: translateY(-2px);
+}
+
+.social-icon {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+}
+
+.social-btn:nth-child(1) .social-icon {
+    font-family: 'Arial', sans-serif;
+}
+
+.social-btn:nth-child(3) .social-icon {
+    font-family: 'Times New Roman', serif;
+    font-size: 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .background-section {
+        height: 40vh;
+        min-height: 300px;
+    }
+
+    .login-section {
+        min-width: auto;
+        padding: 20px;
+    }
+
+    .glow-segment {
+        filter: blur(40px);
+    }
+    
+    .segment-1 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .segment-2 {
+        width: 280px;
+        height: 180px;
+    }
+    
+    .segment-3 {
+        width: 350px;
+        height: 250px;
+    }
+    
+    .segment-4 {
+        width: 280px;
+        height: 200px;
+    }
+    
+    .segment-5 {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-title {
+        font-size: 24px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .logo {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+}
+
