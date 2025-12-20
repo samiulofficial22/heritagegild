@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HeritageGild Admin</title>
+    <meta name="description" content="HeritageGild Admin Dashboard - Manage your gold investments and track your portfolio">
+    
+    <!-- Preconnect to CDN for faster resource loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></noscript>
+    
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons - Load asynchronously -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    
+    <!-- Critical CSS - Loads first for faster initial render -->
+    <link rel="stylesheet" href="css/critical.css">
+    
+    <!-- Main CSS - Loads asynchronously -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="assets/logo.svg" height="60"  alt="HeritageGild Logo" class="logo-img" loading="eager" decoding="async">
+            </a>
+            <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" title="Collapse sidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-page="dashboard" data-tooltip="Dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" data-tooltip="Trading Terminal">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Trading Terminal</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="nav-dropdown">
+                        <li><a href="#" class="dropdown-link">Live Trades</a></li>
+                        <li><a href="#" class="dropdown-link">Buy History</a></li>
+                        <li><a href="#" class="dropdown-link">Sell History</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" data-tooltip="Fundings">
+                        <i class="fas fa-wallet"></i>
+                        <span>Fundings</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="nav-dropdown">
+                        <li><a href="#" class="dropdown-link">Deposit Funds</a></li>
+                        <li><a href="#" class="dropdown-link">Withdraw Funds</a></li>
+                        <li><a href="#" class="dropdown-link">Transfer Funds</a></li>
+                        <li><a href="#" class="dropdown-link">Charity Funds</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="provident" data-tooltip="Provident History">
+                        <i class="fas fa-piggy-bank"></i>
+                        <span>Provident History</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="transactions" data-tooltip="Transactions History">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Transactions History</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="investment" data-tooltip="Investment">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Investment</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="staking" data-tooltip="HTG Coin Staking">
+                        <i class="fas fa-coins"></i>
+                        <span>HTG Coin Staking</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="promotion" data-tooltip="Promotion">
+                        <i class="fas fa-gift"></i>
+                        <span>Promotion</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="generation" data-tooltip="Generation">
+                        <i class="fas fa-users"></i>
+                        <span>Generation</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="referral" data-tooltip="Direct Referral">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Direct Referral</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="sales" data-tooltip="Total Sales">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Total Sales</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-page="members" data-tooltip="All Active Member">
+                        <i class="fas fa-users-cog"></i>
+                        <span>All Active Member</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+        <!-- Top Header Bar -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+            </div>
+            
+            <div class="header-right w-100 d-flex justify-content-between">
+                <div class="header-right-content d-flex align-items-center gap-4">
+                    <!-- Gold Price Section -->
+                    <div class="gold-price-section">
+                        <button class="gold-icon-btn">
+                            <i class="fas fa-coins"></i>
+                        </button>
+                        <span class="gold-label">Gold</span>
+                        <span class="separator">|</span>
+                        <span class="gold-price-value">$120/GM</span>
+                        <span class="price-change-badge positive">+0.35%</span>
+                    </div>
+                    
+                    <!-- Market Info Section -->
+                    <div class="market-info-section">
+                        <button class="market-info-btn">
+                            <span>Market Info</span>
+                        </button>
+                        <span class="separator">|</span>
+                        <span class="market-karat">24K</span>
+                        <span class="separator">|</span>
+                        <span class="market-purity">99.9% Purity</span>
+                    </div>
+                    
+                    <!-- Buy & Sell Button -->
+                    <button class="btn-buy-sell-yellow">
+                        <span>Buy & Sell</span>
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                </div>
+                
+                <div class="header-right-content d-flex align-items-center gap-4">
+                    <!-- Referral Section -->
+                    <div class="referral-section">
+                        <span class="referral-count-text">32 referral</span>
+                        <div class="referral-avatars-group">
+                            <div class="avatar-circle avatar-1"></div>
+                            <div class="avatar-circle avatar-2">E</div>
+                            <div class="avatar-circle avatar-3">B</div>
+                            <div class="avatar-circle avatar-4">C</div>
+                        </div>
+                        <button class="btn-invite-white">
+                            <i class="fas fa-plus"></i> Invite
+                        </button>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <button class="notification-bell-btn" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    
+                    <!-- User Avatar -->
+                    <div class="user-dropdown-wrapper">
+                        <button class="user-avatar-btn" id="userAvatarBtn">
+                            <div class="avatar-circle avatar-user">A</div>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Stats Cards Section -->
+            <div class="stats-cards-section">
+                <div class="row g-4">
+                    <!-- Total Investment Card -->
+                    <div class="col-lg-5 col-md-6">
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <h3 class="stat-title">Total Investment</h3>
+                            </div>
+                            <div class="stat-card-body">
+                                <div class="stat-value">$25,000.00 USD</div>
+                                <div class="stat-subtitle">
+                                    <span class="stat-change positive">
+                                        <i class="fas fa-arrow-up"></i> $200.00 invest in last week
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-7 p-0">
+                        <div class="row">
+                             <!-- Gold Balance Card -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="stat-card stat-card-right">
+                                    <div class="stat-card-header">
+                                        <h3 class="stat-title">Gold Balance</h3>
+                                    </div>
+                                    <div class="stat-card-body">
+                                        <div class="stat-value">150g</div>
+                                        <div class="stat-subtitle">Total gold holding</div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Monthly ROI Card -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="stat-card stat-card-right">
+                                    <div class="stat-card-header">
+                                        <h3 class="stat-title">Monthly ROI</h3>
+                                    </div>
+                                    <div class="stat-card-body">
+                                        <div class="stat-value">12.5%</div>
+                                        <div class="stat-subtitle">Current month return</div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Referral Income Card -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="stat-card stat-card-right">
+                                    <div class="stat-card-header">
+                                        <h3 class="stat-title">Referral Income</h3>
+                                    </div>
+                                    <div class="stat-card-body">
+                                        <div class="stat-value">$3,250</div>
+                                        <div class="stat-subtitle">Earnings from referrals</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions and Chart Section -->
+            <div class="row g-4 mt-4">
+                <!-- Recent Transactions -->
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <h3 class="card-title">Recent Transactions</h3>
+                                <p class="card-subtitle">Track your latest deposits, withdrawals & earnings.</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="transaction-filters">
+                                <button class="filter-btn active" data-filter="week">This Week</button>
+                                <button class="filter-btn" data-filter="month">This Month</button>
+                                <div class="dropdown">
+                                    <button class="filter-btn dropdown-toggle" data-bs-toggle="dropdown">
+                                        All
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">All</a></li>
+                                        <li><a class="dropdown-item" href="#">Deposits</a></li>
+                                        <li><a class="dropdown-item" href="#">Withdrawals</a></li>
+                                        <li><a class="dropdown-item" href="#">Earnings</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="transactions-list">
+                                <div class="transaction-item">
+                                    <div class="transaction-icon">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-type">Gold Buy</div>
+                                        <div class="transaction-date">Oct 9, 2025</div>
+                                    </div>
+                                    <div class="transaction-status">
+                                        <span class="status-badge status-complete">Complete</span>
+                                    </div>
+                                    <div class="transaction-amount">$250.00</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-icon">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-type">Gold Buy</div>
+                                        <div class="transaction-date">Oct 9, 2025</div>
+                                    </div>
+                                    <div class="transaction-status">
+                                        <span class="status-badge status-complete">Complete</span>
+                                    </div>
+                                    <div class="transaction-amount">$250.00</div>
+                                </div>
+                                
+                                <div class="transaction-item">
+                                    <div class="transaction-icon">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-type">Gold Buy</div>
+                                        <div class="transaction-date">Oct 9, 2025</div>
+                                    </div>
+                                    <div class="transaction-status">
+                                        <span class="status-badge status-complete">Complete</span>
+                                    </div>
+                                    <div class="transaction-amount">$250.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gold Price Chart -->
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <div class="card-header-content">
+                                <h3 class="card-title">Gold Price</h3>
+                                <p class="card-subtitle">
+                                    <span class="price-increase positive">
+                                        <i class="fas fa-arrow-up"></i> 9.72% Increase this month
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-filters">
+                                <button class="chart-filter-btn" data-period="1D">1D</button>
+                                <button class="chart-filter-btn" data-period="7D">7D</button>
+                                <button class="chart-filter-btn" data-period="1M">1M</button>
+                                <button class="chart-filter-btn active" data-period="6M">6M</button>
+                                <button class="chart-filter-btn" data-period="1Y">1Y</button>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <canvas id="goldPriceChart"></canvas>
+                            </div>
+                            
+                            <div class="chart-stats">
+                                <div class="chart-stat-item">
+                                    <span class="stat-label">Current Price</span>
+                                    <span class="stat-value">$79/g</span>
+                                </div>
+                                <div class="chart-stat-item">
+                                    <span class="stat-label">24H Change</span>
+                                    <span class="stat-value positive">
+                                        <i class="fas fa-arrow-up"></i> +2.3%
+                                    </span>
+                                </div>
+                                <div class="chart-stat-item">
+                                    <span class="stat-label">Market Status</span>
+                                    <span class="stat-value">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rank Journey Table -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Your Rank Journey</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table rank-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Requirement</th>
+                                            <th>Reward</th>
+                                            <th>Salary</th>
+                                            <th>Tag</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-stars">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="rank-name">1 Star</span>
+                                            </td>
+                                            <td>5gm Deposit + 5 Active</td>
+                                            <td>1.5g</td>
+                                            <td>1.5g</td>
+                                            <td>
+                                                <span class="rank-tag rank-active">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="rank-name">2 Star</span>
+                                            </td>
+                                            <td>10gm + 10 Active</td>
+                                            <td>2g</td>
+                                            <td>2g</td>
+                                            <td>
+                                                <span class="rank-tag rank-locked">Locked</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="rank-name">3 Star</span>
+                                            </td>
+                                            <td>20gm + 15 Active</td>
+                                            <td>3g</td>
+                                            <td>3g</td>
+                                            <td>
+                                                <span class="rank-tag rank-locked">Locked</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span class="rank-name">4 Star</span>
+                                            </td>
+                                            <td>30gm + 20 Active</td>
+                                            <td>4g</td>
+                                            <td>4g</td>
+                                            <td>
+                                                <span class="rank-tag rank-locked">Locked</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap 5.3 JS - Defer loading -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    
+    <!-- Chart.js - Defer loading as it's not critical for initial render -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+    
+    <!-- Performance optimizations - Load first -->
+    <script src="js/performance.js"></script>
+    
+    <!-- Custom JS - Defer loading -->
+    <script src="js/ui.js" defer></script>
+    <script src="js/chart.js" defer></script>
+</body>
+</html>
+
