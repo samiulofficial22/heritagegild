@@ -40,11 +40,11 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <a href="index.html" class="sidebar-logo">
-                <img src="assets/logo.svg" height="60"  alt="HeritageGild Logo" class="logo-img" loading="eager" decoding="async">
+                <img src="assets/logo.png" height="40"  alt="HeritageGild Logo" class="logo-img" loading="eager" decoding="async">
             </a>
-            <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" title="Collapse sidebar">
+            <!-- <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" title="Collapse sidebar">
                 <i class="fas fa-chevron-left"></i>
-            </button>
+            </button> -->
         </div>
         
         <nav class="sidebar-nav">
@@ -195,10 +195,16 @@
                         </button>
                     </div>
                     
+                    <!-- Divider -->
+                    <div class="header-divider"></div>
+                    
                     <!-- Notifications -->
                     <button class="notification-bell-btn" id="notificationBtn">
                         <i class="fas fa-bell"></i>
                     </button>
+                    
+                    <!-- Divider -->
+                    <div class="header-divider"></div>
                     
                     <!-- User Avatar -->
                     <div class="user-dropdown-wrapper">
@@ -206,15 +212,24 @@
                             <div class="avatar-circle avatar-user">A</div>
                         </button>
                         <div class="user-dropdown" id="userDropdown">
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user"></i> Profile
-                            </a>
+                            <div class="user-profile-section">
+                                <div class="user-profile-avatar">
+                                    <div class="avatar-circle avatar-user">A</div>
+                                </div>
+                                <div class="user-profile-info">
+                                    <div class="user-profile-name">David Mild</div>
+                                    <div class="user-profile-email">
+                                        example@gmail.com
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
-                                <i class="fas fa-sign-out-alt"></i> Logout
+                                <i class="fas fa-sign-out-alt"></i> Log out
                             </a>
                         </div>
                     </div>
@@ -229,22 +244,55 @@
                 <div class="row g-4">
                     <!-- Total Investment Card -->
                     <div class="col-lg-5 col-md-6">
-                        <div class="stat-card">
+                        <div class="stat-card stat-card-left">
                             <div class="stat-card-header">
                                 <h3 class="stat-title">Total Investment</h3>
                             </div>
                             <div class="stat-card-body">
-                                <div class="stat-value">$25,000.00 USD</div>
+                                <div class="stat-value-wrapper">
+                                    <div class="stat-value">$25,000.00</div>
+                                    <div class="currency-dropdown-wrapper">
+                                        <button class="currency-dropdown-btn" id="currencyDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="currency-code">USD</span>
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu currency-dropdown-menu" aria-labelledby="currencyDropdownBtn">
+                                            <li class="dropdown-header">
+                                                <div class="currency-search">
+                                                    <i class="fas fa-search"></i>
+                                                    <input type="text" placeholder="Search currency" class="currency-search-input">
+                                                </div>
+                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item currency-item active" href="#" data-currency="USD">
+                                                    <span>USD</span>
+                                                    <i class="fas fa-check"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item currency-item" href="#" data-currency="BDT">
+                                                    <span>BDT</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item currency-item" href="#" data-currency="EU">
+                                                    <span>EU</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="stat-subtitle">
                                     <span class="stat-change positive">
-                                        <i class="fas fa-arrow-up"></i> $200.00 invest in last week
-                                    </span>
+                                        <i class="fas fa-arrow-up"></i> $200.00 
+                                    </span>invest in last week
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-7 p-0">
+                    <div class="col-lg-7 p-0">
                         <div class="row">
                              <!-- Gold Balance Card -->
                             <div class="col-lg-4 col-md-6">
@@ -416,7 +464,31 @@
                 <div class="col-12">
                     <div class="content-card">
                         <div class="card-header">
-                            <h3 class="card-title">Your Rank Journey</h3>
+                            <div class="card-header-content">
+                                <h3 class="card-title">Your Rank Journey</h3>
+                            </div>
+                            <div class="card-menu-dropdown-wrapper">
+                                <button class="card-menu-btn" id="rankTableMenuBtn" data-bs-toggle="dropdown" aria-expanded="false" title="More options">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu card-menu-dropdown" aria-labelledby="rankTableMenuBtn">
+                                    <li class="dropdown-header">
+                                        <h4 class="dropdown-title">Select Table</h4>
+                                        <p class="dropdown-description">Select the table you want to view in the dashboard.</p>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item table-option-item active" href="#" data-table="rank-journey">
+                                            <span>Your Rank Journey</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item table-option-item" href="#" data-table="active-investments">
+                                            <span>My Active Investments</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -433,10 +505,10 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <div class="rank-stars">
-                                                    <i class="fas fa-star"></i>
+                                                <div class="rank-cell">
+                                                    <i class="fas fa-star rank-star-icon"></i>
+                                                    <span class="rank-name">1 Star</span>
                                                 </div>
-                                                <span class="rank-name">1 Star</span>
                                             </td>
                                             <td>5gm Deposit + 5 Active</td>
                                             <td>1.5g</td>
@@ -447,11 +519,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div class="rank-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                                <div class="rank-cell">
+                                                    <i class="fas fa-star rank-star-icon"></i>
+                                                    <span class="rank-name">2 Star</span>
                                                 </div>
-                                                <span class="rank-name">2 Star</span>
                                             </td>
                                             <td>10gm + 10 Active</td>
                                             <td>2g</td>
@@ -462,12 +533,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div class="rank-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                                <div class="rank-cell">
+                                                    <i class="fas fa-star rank-star-icon"></i>
+                                                    <span class="rank-name">3 Star</span>
                                                 </div>
-                                                <span class="rank-name">3 Star</span>
                                             </td>
                                             <td>20gm + 15 Active</td>
                                             <td>3g</td>
@@ -478,13 +547,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <div class="rank-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                                <div class="rank-cell">
+                                                    <i class="fas fa-star rank-star-icon"></i>
+                                                    <span class="rank-name">4 Star</span>
                                                 </div>
-                                                <span class="rank-name">4 Star</span>
                                             </td>
                                             <td>30gm + 20 Active</td>
                                             <td>4g</td>

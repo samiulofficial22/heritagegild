@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeUserDropdown();
     initializeTransactionFilters();
     initializeNavLinks();
+    initializeCurrencyDropdown();
+    initializeTableModal();
 });
 
 /**
@@ -18,7 +20,7 @@ function initializeSidebar() {
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn');
     const mainWrapper = document.querySelector('.main-wrapper');
-    const navLinks = document.querySelectorAll('.nav-link[data-toggle="dropdown"]');
+    const dropdownNavLinks = document.querySelectorAll('.nav-link[data-toggle="dropdown"]');
 
     // Load saved sidebar state from localStorage
     const savedState = localStorage.getItem('sidebarCollapsed');
@@ -68,9 +70,10 @@ function initializeSidebar() {
     });
 
     // Handle dropdown toggles
-    navLinks.forEach(link => {
+    dropdownNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const navItem = this.closest('.nav-item');
             const isActive = navItem.classList.contains('active');
 
@@ -396,10 +399,123 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+/**
+ * Initialize Currency Dropdown
+ */
+function initializeCurrencyDropdown() {
+    const currencyBtn = document.getElementById('currencyDropdownBtn');
+    const currencyItems = document.querySelectorAll('.currency-item');
+    const currencySearchInput = document.querySelector('.currency-search-input');
+    const dropdownMenu = document.querySelector('.currency-dropdown-menu');
+
+    if (!currencyBtn) return;
+
+    // Ensure dropdown menu has highest z-index when shown
+    if (currencyBtn && dropdownMenu) {
+        currencyBtn.addEventListener('shown.bs.dropdown', function() {
+            dropdownMenu.style.zIndex = '999999';
+            dropdownMenu.style.position = 'absolute';
+        });
+        
+        currencyBtn.addEventListener('show.bs.dropdown', function() {
+            dropdownMenu.style.zIndex = '999999';
+            dropdownMenu.style.position = 'absolute';
+        });
+    }
+
+    // Handle currency selection
+    currencyItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const currency = this.getAttribute('data-currency');
+            
+            // Update button text
+            const currencyCode = currencyBtn.querySelector('.currency-code');
+            if (currencyCode) {
+                currencyCode.textContent = currency;
+            }
+            
+            // Remove active class from all items
+            currencyItems.forEach(i => i.classList.remove('active'));
+            
+            // Add active class to selected item
+            this.classList.add('active');
+            
+            // Update stat value (you can customize this based on currency)
+            updateCurrencyValue(currency);
+            
+            // Close dropdown
+            const dropdown = bootstrap.Dropdown.getInstance(currencyBtn);
+            if (dropdown) {
+                dropdown.hide();
+            }
+        });
+    });
+
+    // Handle search functionality
+    if (currencySearchInput) {
+        currencySearchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            currencyItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const listItem = item.closest('li');
+                if (text.includes(searchTerm)) {
+                    listItem.style.display = '';
+                } else {
+                    listItem.style.display = 'none';
+                }
+            });
+        });
+    }
+}
+
+/**
+ * Update currency value (placeholder - implement based on your needs)
+ */
+function updateCurrencyValue(currency) {
+    // This is a placeholder - implement currency conversion logic here
+    console.log('Currency changed to:', currency);
+    // You can update the stat-value here based on currency conversion
+}
+
+/**
+ * Initialize Table Selection Dropdown
+ */
+function initializeTableModal() {
+    const menuBtn = document.getElementById('rankTableMenuBtn');
+    const tableOptions = document.querySelectorAll('.table-option-item');
+
+    if (!menuBtn) return;
+
+    // Handle table option selection
+    tableOptions.forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all options
+            tableOptions.forEach(opt => opt.classList.remove('active'));
+            
+            // Add active class to selected option
+            this.classList.add('active');
+            
+            const tableType = this.getAttribute('data-table');
+            console.log('Selected table:', tableType);
+            
+            // Close dropdown after selection
+            const dropdown = bootstrap.Dropdown.getInstance(menuBtn);
+            if (dropdown) {
+                dropdown.hide();
+            }
+        });
+    });
+}
+
 // Export functions for external use
 window.DashboardUI = {
     showToast: showToast,
     setButtonLoading: setButtonLoading,
-    filterTransactions: filterTransactions
+    filterTransactions: filterTransactions,
+    initializeCurrencyDropdown: initializeCurrencyDropdown,
+    initializeTableModal: initializeTableModal
 };
 
