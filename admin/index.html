@@ -251,6 +251,7 @@
                             <div class="stat-card-body">
                                 <div class="stat-value-wrapper">
                                     <div class="stat-value">$25,000.00</div>
+                                    <div class="stat-value-separator"></div>
                                     <div class="currency-dropdown-wrapper">
                                         <button class="currency-dropdown-btn" id="currencyDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
                                             <span class="currency-code">USD</span>
@@ -263,11 +264,10 @@
                                                     <input type="text" placeholder="Search currency" class="currency-search-input">
                                                 </div>
                                             </li>
-                                            <li><hr class="dropdown-divider"></li>
+                                            <li><hr class="dropdown-divider dropdown-divider-usd"></li>
                                             <li>
                                                 <a class="dropdown-item currency-item active" href="#" data-currency="USD">
                                                     <span>USD</span>
-                                                    <i class="fas fa-check"></i>
                                                 </a>
                                             </li>
                                             <li>
@@ -340,9 +340,9 @@
             <!-- Recent Transactions and Chart Section -->
             <div class="row g-4 mt-4">
                 <!-- Recent Transactions -->
-                <div class="col-lg-6">
-                    <div class="content-card">
-                        <div class="card-header">
+                <div class="col-lg-5 m-0">
+                    <div class="content-card content-card-bg">
+                        <div class="card-header card-header-space">
                             <div class="card-header-content">
                                 <h3 class="card-title">Recent Transactions</h3>
                                 <p class="card-subtitle">Track your latest deposits, withdrawals & earnings.</p>
@@ -350,17 +350,26 @@
                         </div>
                         <div class="card-body">
                             <div class="transaction-filters">
-                                <button class="filter-btn active" data-filter="week">This Week</button>
-                                <button class="filter-btn" data-filter="month">This Month</button>
+                                <div class="transaction-filters-inner">
+                                    <button class="filter-btn active" data-filter="week">This Week</button>
+                                    <button class="filter-btn" data-filter="month">This Month</button>
+                                </div>
+                                
                                 <div class="dropdown">
-                                    <button class="filter-btn dropdown-toggle" data-bs-toggle="dropdown">
-                                        All
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">All</a></li>
-                                        <li><a class="dropdown-item" href="#">Deposits</a></li>
-                                        <li><a class="dropdown-item" href="#">Withdrawals</a></li>
-                                        <li><a class="dropdown-item" href="#">Earnings</a></li>
+                                    <div class="dropdown-inner-filter">    
+                                        <button class="filter-btn-dp dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            All
+                                            
+                                        </button>
+                                    </div>
+                                    
+                                    <ul class="dropdown-menu transaction-dropdown-menu">
+                                        <li><a class="dropdown-item active" href="#">All</a></li>
+                                        <li><a class="dropdown-item" href="#">Deposit</a></li>
+                                        <li><a class="dropdown-item" href="#">Withdrawal</a></li>
+                                        <li><a class="dropdown-item" href="#">Referral</a></li>
+                                        <li><a class="dropdown-item" href="#">ROI</a></li>
+                                        <li><a class="dropdown-item" href="#">Staking</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -413,9 +422,9 @@
                 </div>
                 
                 <!-- Gold Price Chart -->
-                <div class="col-lg-6">
-                    <div class="content-card">
-                        <div class="card-header">
+                <div class="col-lg-7 m-0">
+                    <div class="content-card content-card-bg">
+                        <div class="card-header card-header-space">
                             <div class="card-header-content">
                                 <h3 class="card-title">Gold Price</h3>
                                 <p class="card-subtitle">
@@ -424,8 +433,6 @@
                                     </span>
                                 </p>
                             </div>
-                        </div>
-                        <div class="card-body">
                             <div class="chart-filters">
                                 <button class="chart-filter-btn" data-period="1D">1D</button>
                                 <button class="chart-filter-btn" data-period="7D">7D</button>
@@ -433,25 +440,41 @@
                                 <button class="chart-filter-btn active" data-period="6M">6M</button>
                                 <button class="chart-filter-btn" data-period="1Y">1Y</button>
                             </div>
-                            
+                        </div>
+                        <div class="card-body">
                             <div class="chart-container">
                                 <canvas id="goldPriceChart"></canvas>
                             </div>
                             
                             <div class="chart-stats">
                                 <div class="chart-stat-item">
-                                    <span class="stat-label">Current Price</span>
+                                    <div class="chart-stat-icon">
+                                        <i class="fas fa-wave-square"></i>
+                                    </div>
                                     <span class="stat-value">$79/g</span>
+                                    <span class="stat-label">Current Price</span>
                                 </div>
                                 <div class="chart-stat-item">
-                                    <span class="stat-label">24H Change</span>
+                                    <div class="chart-stat-line"></div>
+                                </div>
+                                <div class="chart-stat-item">
+                                    <div class="chart-stat-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
                                     <span class="stat-value positive">
                                         <i class="fas fa-arrow-up"></i> +2.3%
                                     </span>
+                                    <span class="stat-label">24H Change</span>
                                 </div>
                                 <div class="chart-stat-item">
-                                    <span class="stat-label">Market Status</span>
+                                    <div class="chart-stat-line"></div>
+                                </div>
+                                <div class="chart-stat-item">
+                                    <div class="chart-stat-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
                                     <span class="stat-value">Active</span>
+                                    <span class="stat-label">Market Status</span>
                                 </div>
                             </div>
                         </div>
@@ -468,7 +491,7 @@
                                 <h3 class="card-title">Your Rank Journey</h3>
                             </div>
                             <div class="card-menu-dropdown-wrapper">
-                                <button class="card-menu-btn" id="rankTableMenuBtn" data-bs-toggle="dropdown" aria-expanded="false" title="More options">
+                                <button class="card-menu-btn tablemenubtn" id="rankTableMenuBtn" data-bs-toggle="dropdown" aria-expanded="false" title="More options">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
                                 <ul class="dropdown-menu card-menu-dropdown" aria-labelledby="rankTableMenuBtn">

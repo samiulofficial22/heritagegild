@@ -4,6 +4,7 @@
 
 // Chart instance variable
 let goldPriceChart = null;
+let currentPeriod = '6M';
 
 // Mock data for different time periods
 const chartData = {
@@ -27,9 +28,11 @@ const chartData = {
     },
     '6M': {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        prices: [65.0, 68.0, 70.0, 72.0, 75.0, 79.0],
+        prices: [25.0, 100.0, 95.0, 130.0, 160.0, 170.0],
         currentPrice: 79.0,
-        change: 21.5
+        change: 21.5,
+        highlightIndex: 3, // April index
+        highlightPrice: 72.0
     },
     '1Y': {
         labels: ['Q1', 'Q2', 'Q3', 'Q4'],
@@ -67,10 +70,10 @@ function initializeGoldPriceChart() {
             datasets: [{
                 label: 'Gold Price ($/g)',
                 data: initialData.prices,
-                borderColor: '#22c55e',
-                backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                borderWidth: 3,
-                fill: true,
+                borderColor: '#ffffff',
+                backgroundColor: 'transparent',
+                borderWidth: 2,
+                fill: false,
                 tension: 0.4,
                 pointRadius: 0,
                 pointHoverRadius: 6,
@@ -134,13 +137,16 @@ function initializeGoldPriceChart() {
                     }
                 },
                 y: {
-                    beginAtZero: false,
+                    beginAtZero: true,
+                    min: 0,
+                    max: 200,
                     grid: {
                         color: 'rgba(255, 255, 255, 0.05)',
                         drawBorder: false,
                         lineWidth: 1
                     },
                     ticks: {
+                        stepSize: 50,
                         color: '#6B7280',
                         font: {
                             size: 11,
@@ -165,6 +171,88 @@ function initializeGoldPriceChart() {
             }
         }
     };
+
+    // Add plugin for vertical line at April
+    const verticalLinePlugin = {
+        id: 'verticalLine',
+        afterDraw: (chart) => {
+            if (currentPeriod !== '6M') return;
+            
+            const data = chartData['6M'];
+            if (data.highlightIndex !== undefined) {
+                const ctx = chart.ctx;
+                const xAxis = chart.scales.x;
+                const yAxis = chart.scales.y;
+                
+                // Calculate x position for April (index 3)
+                const xPos = xAxis.getPixelForValue(data.highlightIndex);
+                
+                // Draw vertical dashed line
+                ctx.save();
+                ctx.strokeStyle = '#22c55e';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(xPos, yAxis.top);
+                ctx.lineTo(xPos, yAxis.bottom);
+                ctx.stroke();
+                ctx.restore();
+                
+                // Draw green dot at intersection
+                const yPos = yAxis.getPixelForValue(data.highlightPrice || data.prices[data.highlightIndex]);
+                ctx.save();
+                ctx.fillStyle = '#22c55e';
+                ctx.beginPath();
+                ctx.arc(xPos, yPos, 4, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.restore();
+                
+                // Draw tooltip box
+                const tooltipX = xPos + 10;
+                const tooltipY = yPos - 30;
+                const tooltipText = `$${data.highlightPrice || data.prices[data.highlightIndex]}/g`;
+                
+                ctx.save();
+                ctx.font = '500 12px Poppins, sans-serif';
+                const tooltipWidth = ctx.measureText(tooltipText).width + 40;
+                const tooltipHeight = 28;
+                const tooltipPadding = 8;
+                
+                // Draw rounded rectangle manually
+                const radius = 4;
+                ctx.fillStyle = 'rgba(30, 29, 28, 0.95)';
+                ctx.strokeStyle = '#22c55e';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(tooltipX + radius, tooltipY - tooltipHeight);
+                ctx.lineTo(tooltipX + tooltipWidth - radius, tooltipY - tooltipHeight);
+                ctx.quadraticCurveTo(tooltipX + tooltipWidth, tooltipY - tooltipHeight, tooltipX + tooltipWidth, tooltipY - tooltipHeight + radius);
+                ctx.lineTo(tooltipX + tooltipWidth, tooltipY - radius);
+                ctx.quadraticCurveTo(tooltipX + tooltipWidth, tooltipY, tooltipX + tooltipWidth - radius, tooltipY);
+                ctx.lineTo(tooltipX + radius, tooltipY);
+                ctx.quadraticCurveTo(tooltipX, tooltipY, tooltipX, tooltipY - radius);
+                ctx.lineTo(tooltipX, tooltipY - tooltipHeight + radius);
+                ctx.quadraticCurveTo(tooltipX, tooltipY - tooltipHeight, tooltipX + radius, tooltipY - tooltipHeight);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+                
+                // Draw arrow icon (using Unicode arrow)
+                ctx.fillStyle = '#22c55e';
+                ctx.font = 'bold 12px Arial';
+                ctx.fillText('↑', tooltipX + tooltipPadding, tooltipY - 12);
+                
+                // Draw text
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '500 12px Poppins, sans-serif';
+                ctx.fillText(tooltipText, tooltipX + tooltipPadding + 15, tooltipY - 10);
+                ctx.restore();
+            }
+        }
+    };
+
+    // Register plugin
+    Chart.register(verticalLinePlugin);
 
     // Create chart instance
     goldPriceChart = new Chart(ctx, config);
@@ -203,19 +291,28 @@ function updateChartData(period) {
         return;
     }
 
+    currentPeriod = period;
     const data = chartData[period];
 
     // Update chart data
     goldPriceChart.data.labels = data.labels;
     goldPriceChart.data.datasets[0].data = data.prices;
 
-    // Update Y-axis scale based on data range
-    const minPrice = Math.min(...data.prices);
-    const maxPrice = Math.max(...data.prices);
-    const padding = (maxPrice - minPrice) * 0.2;
+    // For 6M period, use fixed Y-axis scale (0-200)
+    if (period === '6M') {
+        goldPriceChart.options.scales.y.min = 0;
+        goldPriceChart.options.scales.y.max = 200;
+        goldPriceChart.options.scales.y.ticks.stepSize = 50;
+    } else {
+        // Update Y-axis scale based on data range for other periods
+        const minPrice = Math.min(...data.prices);
+        const maxPrice = Math.max(...data.prices);
+        const padding = (maxPrice - minPrice) * 0.2;
 
-    goldPriceChart.options.scales.y.min = Math.max(0, minPrice - padding);
-    goldPriceChart.options.scales.y.max = maxPrice + padding;
+        goldPriceChart.options.scales.y.min = Math.max(0, minPrice - padding);
+        goldPriceChart.options.scales.y.max = maxPrice + padding;
+        goldPriceChart.options.scales.y.ticks.stepSize = undefined;
+    }
 
     // Animate chart update
     goldPriceChart.update('active');
