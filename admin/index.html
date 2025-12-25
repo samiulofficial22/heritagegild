@@ -42,6 +42,9 @@
             <a href="index.html" class="sidebar-logo">
                 <img src="assets/logo.png" height="40"  alt="HeritageGild Logo" class="logo-img" loading="eager" decoding="async">
             </a>
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close sidebar">
+                <i class="fas fa-times"></i>
+            </button>
             <!-- <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" title="Collapse sidebar">
                 <i class="fas fa-chevron-left"></i>
             </button> -->
@@ -223,11 +226,46 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="dropdown-divider">
+                            
+                            <!-- Mobile Only Elements -->
+                            <div class="user-dropdown-mobile">
+                                <!-- Gold Price Section -->
+                                <div class="gold-price-section mobile-dropdown-item">
+                                    <button class="gold-icon-btn">
+                                        <i class="fas fa-coins"></i>
+                                    </button>
+                                    <span class="gold-label">Gold</span>
+                                    <span class="gold-price-value">$120/GM</span>
+                                    <span class="price-change-badge positive">+0.35%</span>
+                                </div>
+                                
+                                <!-- Market Info Section -->
+                                <div class="market-info-section mobile-dropdown-item">
+                                    <span class="market-info-btn">Market Info</span>
+                                    <span class="market-karat-tag">24K</span>
+                                    <span class="market-purity-tag">99.9% Purity</span>
+                                </div>
+                                
+                                <!-- Buy & Sell Button -->
+                                <button class="btn-buy-sell-yellow mobile-dropdown-item">
+                                    <span>Buy & Sell</span>
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                                
+                                <!-- Referral Section -->
+                                <div class="referral-section mobile-dropdown-item">
+                                    <span class="referral-count-text">0 referrals</span>
+                                    <button class="btn-invite-white">
+                                        <i class="fas fa-plus"></i> Invite
+                                    </button>
+                                </div>
+                                
+                                <hr class="dropdown-divider">
+                            </div>
+                            
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-cog"></i> Settings
                             </a>
-                            <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 <i class="fas fa-sign-out-alt"></i> Log out
                             </a>

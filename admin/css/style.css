@@ -216,6 +216,28 @@ body {
     position: relative;
 }
 
+.sidebar-close-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    position: absolute;
+    right: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.sidebar-close-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
 .sidebar-collapse-btn {
     background: transparent;
     border: none;
@@ -775,6 +797,118 @@ body {
 }
 .dropdown-divider-usd{
     margin: 0.5rem 0.75rem;
+}
+
+/* Mobile Dropdown Elements */
+.user-dropdown-mobile {
+    display: none;
+}
+
+.mobile-dropdown-item {
+    margin-bottom: var(--spacing-md);
+}
+
+.user-dropdown-mobile .gold-price-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.user-dropdown-mobile .gold-icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 0;
+    font-size: 1rem;
+}
+
+.user-dropdown-mobile .gold-label {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.user-dropdown-mobile .gold-price-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.user-dropdown-mobile .price-change-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.user-dropdown-mobile .market-info-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.user-dropdown-mobile .market-info-btn {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.market-karat-tag,
+.market-purity-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+}
+
+.user-dropdown-mobile .btn-buy-sell-yellow {
+    width: 100%;
+    justify-content: center;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.user-dropdown-mobile .referral-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.user-dropdown-mobile .referral-count-text {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.user-dropdown-mobile .referral-avatars-group {
+    display: none;
+}
+
+.user-dropdown-mobile .btn-invite-white {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: var(--text-primary);
+}
+
+.user-dropdown-mobile .dropdown-divider {
+    margin: var(--spacing-md) 0;
 }
 .dropdown-item {
     display: flex;
@@ -1557,6 +1691,10 @@ body {
         display: block;
     }
     
+    .sidebar-close-btn {
+        display: block;
+    }
+    
     .header-right {
         gap: var(--spacing-md);
     }
@@ -1568,19 +1706,19 @@ body {
 
 @media (max-width: 768px) {
     .main-content {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
     }
     
     .top-header {
         padding: var(--spacing-md);
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         gap: var(--spacing-md);
     }
     
     .header-left {
-        width: 100%;
-        justify-content: space-between;
+        width: auto;
+        justify-content: flex-start;
     }
     
     .sidebar-toggle {
@@ -1588,81 +1726,40 @@ body {
     }
     
     .header-right {
-        width: 100%;
+        width: auto;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: var(--spacing-sm);
-        align-items: stretch;
+        align-items: center;
+        justify-content: flex-end;
     }
     
     .header-right-content {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-xs);
-        align-items: center;
-        justify-content: space-between;
+        display: none;
     }
     
-    .gold-price-section {
-        flex: 1 1 auto;
-        min-width: 140px;
-        padding: 4px 8px;
-        font-size: 0.75rem;
+    /* Hide top bar elements on mobile */
+    .gold-price-section:not(.mobile-dropdown-item),
+    .market-info-section:not(.mobile-dropdown-item),
+    .btn-buy-sell-yellow:not(.mobile-dropdown-item),
+    .referral-section:not(.mobile-dropdown-item) {
+        display: none;
     }
     
-    .gold-label,
-    .gold-price-value {
-        font-size: 0.75rem;
+    /* Show mobile dropdown elements */
+    .user-dropdown-mobile {
+        display: block;
     }
     
-    .market-info-section {
-        flex: 1 1 auto;
-        min-width: 140px;
-        padding: 4px 8px;
-        font-size: 0.75rem;
-    }
-    
-    .market-info-btn,
-    .market-karat,
-    .market-purity {
-        font-size: 0.75rem;
-    }
-    
-    .btn-buy-sell-yellow {
-        padding: 4px 10px;
-        font-size: 0.7rem;
-        margin-right: 0;
-        white-space: nowrap;
-    }
-    
-    .referral-section {
-        flex-wrap: wrap;
-        gap: var(--spacing-xs);
-        padding: var(--spacing-xs) var(--spacing-sm);
-    }
-    
-    .referral-count-text {
-        font-size: 0.75rem;
-    }
-    
-    .referral-avatars-group {
-        margin-left: var(--spacing-xs);
-    }
-    
-    .referral-avatars-group .avatar-circle {
-        width: 24px;
-        height: 24px;
-        font-size: 0.7rem;
-    }
-    
-    .btn-invite-white {
-        padding: 4px 8px;
-        font-size: 0.7rem;
+    .user-dropdown {
+        min-width: 280px;
+        max-width: 90vw;
+        right: 0;
+        padding: var(--spacing-lg);
     }
     
     .notification-bell-btn {
-        padding: var(--spacing-xs);
+        padding: 8px 15px;
         font-size: 1rem;
     }
     
@@ -1672,8 +1769,64 @@ body {
         font-size: 0.9rem;
     }
     
-    .stat-value {
-        font-size: 1.5rem;
+    /* Stats Cards Mobile Layout */
+    .stats-cards-section {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .stats-cards-section .row {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .stats-cards-section .row > .col-lg-5 {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .stats-cards-section .row > .col-lg-7 {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 !important;
+    }
+    
+    .stats-cards-section .row > .col-lg-7 > .row {
+        flex-direction: row;
+        gap: var(--spacing-sm);
+        margin: 0;
+    }
+    
+    .stats-cards-section .row > .col-lg-7 > .row > .col-lg-4 {
+        flex: 1 1 calc(50% - var(--spacing-sm));
+        max-width: calc(50% - var(--spacing-sm));
+        padding: 0;
+    }
+    
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+    
+    .stat-card-left .stat-value {
+        font-size: 2rem;
+    }
+    
+    .stat-card-right .stat-value {
+        font-size: 1.25rem;
+    }
+    
+    .stat-value-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .stat-value-separator {
+        display: none;
+    }
+    
+    .currency-dropdown-wrapper {
+        width: 100%;
+        margin-top: var(--spacing-sm);
     }
     
     .chart-container {
@@ -1694,9 +1847,20 @@ body {
         text-align: left;
         width: 100%;
     }
+    
+    .content-card-bg {
+        padding: var(--spacing-md);
+    }
 }
 
 @media (max-width: 576px) {
+    .btn-buy-sell-yellow{
+        margin: 0;
+    }
+    .user-dropdown-mobile .market-info-section{
+        padding: 0;
+        gap: 0;
+    }
     .sidebar {
         width: 100%;
     }
@@ -1705,52 +1869,62 @@ body {
         font-size: 1.25rem;
     }
     
+    .main-content {
+        padding: var(--spacing-sm);
+    }
+    
     .top-header {
         padding: var(--spacing-sm) var(--spacing-md);
     }
     
     .header-right-content {
-        flex-direction: column;
         align-items: stretch;
         gap: var(--spacing-xs);
     }
     
-    .gold-price-section,
-    .market-info-section {
-        width: 100%;
-        justify-content: center;
-        padding: 6px 10px;
-        font-size: 0.7rem;
+    .user-dropdown {
+        min-width: 260px;
+        max-width: 85vw;
     }
     
-    .gold-label,
-    .gold-price-value,
-    .market-info-btn,
-    .market-karat,
-    .market-purity {
-        font-size: 0.7rem;
+    /* Stats Cards Small Mobile */
+    .stats-cards-section {
+        margin-bottom: var(--spacing-sm);
     }
     
-    .btn-buy-sell-yellow {
-        width: 100%;
-        justify-content: center;
-        padding: 6px 10px;
-        font-size: 0.7rem;
+    .stats-cards-section .row > .col-lg-7 > .row {
+        flex-direction: column;
+        gap: var(--spacing-sm);
     }
     
-    .referral-section {
-        width: 100%;
-        justify-content: center;
-        padding: var(--spacing-xs);
+    .stats-cards-section .row > .col-lg-7 > .row > .col-lg-4 {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
     
     .stat-card {
-        padding: var(--spacing-lg);
+        padding: var(--spacing-md);
+    }
+    
+    .stat-card-left .stat-value {
+        font-size: 1.75rem;
+    }
+    
+    .stat-card-right .stat-value {
+        font-size: 1.1rem;
+    }
+    
+    .stat-title {
+        font-size: 0.875rem;
     }
     
     .content-card .card-header,
     .content-card .card-body {
-        padding: var(--spacing-lg);
+        padding: 5px;
+    }
+    
+    .content-card-bg {
+        padding: var(--spacing-md);
     }
     
     .rank-table {

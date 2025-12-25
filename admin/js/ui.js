@@ -58,6 +58,14 @@ function initializeSidebar() {
         });
     }
 
+    // Sidebar close button for mobile
+    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+    if (sidebarCloseBtn) {
+        sidebarCloseBtn.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+        });
+    }
+
     // Close sidebar when clicking outside on mobile
     document.addEventListener('click', function(event) {
         if (window.innerWidth <= 1200) {
