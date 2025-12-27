@@ -1,0 +1,343 @@
+/* Minimal Custom CSS - Using Bootstrap 5 for most styling */
+
+:root {
+    --gold-color: #F4C542;
+    --gold-hover: #E5B63C;
+    --bg-dark: #1A1918;
+    --bg-darker: #0B0A09;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Background Section - Left Side */
+.background-section {
+    flex: 0 0 60%;
+    background: #000000;
+    min-height: 30vh;
+}
+
+@media (min-width: 992px) {
+    .background-section {
+        min-height: auto;
+    }
+}
+
+.glow-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.glow-segment {
+    position: absolute;
+    filter: blur(80px);
+    opacity: 0.85;
+}
+
+/* Upper-Left: Smaller circular light source */
+.segment-1 {
+    width: 350px;
+    height: 350px;
+    top: 8%;
+    left: 5%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, 
+        rgba(255, 215, 0, 0.9) 0%, 
+        rgba(255, 200, 0, 0.7) 20%,
+        rgba(244, 197, 66, 0.5) 40%,
+        rgba(244, 197, 66, 0.3) 60%,
+        rgba(244, 197, 66, 0.1) 80%,
+        transparent 100%);
+    animation: glowPulse1 8s ease-in-out infinite;
+}
+
+/* Lower-Middle: Large elongated/teardrop light source */
+.segment-2 {
+    width: 600px;
+    height: 450px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: radial-gradient(ellipse at center, 
+        rgba(255, 220, 0, 1) 0%,
+        rgba(255, 200, 0, 0.8) 15%,
+        rgba(244, 197, 66, 0.7) 30%,
+        rgba(255, 180, 0, 0.5) 45%,
+        rgba(244, 197, 66, 0.3) 60%,
+        rgba(244, 197, 66, 0.15) 75%,
+        transparent 100%);
+    animation: glowPulse2 10s ease-in-out infinite;
+}
+
+/* Lower-Right: Smaller oval light source */
+.segment-3 {
+    width: 400px;
+    height: 300px;
+    top: 70%;
+    left: 70%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center,
+        rgba(255, 210, 0, 0.85) 0%,
+        rgba(255, 190, 0, 0.65) 25%,
+        rgba(244, 197, 66, 0.45) 45%,
+        rgba(244, 197, 66, 0.25) 65%,
+        rgba(244, 197, 66, 0.1) 85%,
+        transparent 100%);
+    animation: glowPulse3 7s ease-in-out infinite;
+}
+
+/* Additional subtle glow layers for depth */
+.segment-4 {
+    width: 500px;
+    height: 500px;
+    top: 45%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+        rgba(244, 197, 66, 0.2) 0%,
+        rgba(244, 197, 66, 0.1) 40%,
+        transparent 70%);
+    filter: blur(100px);
+    animation: glowPulse4 12s ease-in-out infinite;
+}
+
+.segment-5 {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    left: 80%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+        rgba(255, 200, 0, 0.3) 0%,
+        rgba(244, 197, 66, 0.15) 50%,
+        transparent 80%);
+    filter: blur(90px);
+    animation: glowPulse5 9s ease-in-out infinite;
+}
+
+@keyframes glowPulse1 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 0.75; 
+    }
+    50% { 
+        transform: translate(-15px, -10px) scale(1.15); 
+        opacity: 0.9; 
+    }
+}
+
+@keyframes glowPulse2 {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 0.8; 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.1); 
+        opacity: 0.95; 
+    }
+}
+
+@keyframes glowPulse3 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 0.7; 
+    }
+    50% { 
+        transform: translate(10px, -15px) scale(1.12); 
+        opacity: 0.85; 
+    }
+}
+
+@keyframes glowPulse4 {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 0.15; 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+        opacity: 0.25; 
+    }
+}
+
+@keyframes glowPulse5 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 0.2; 
+    }
+    50% { 
+        transform: translate(-10px, 10px) scale(1.1); 
+        opacity: 0.3; 
+    }
+}
+
+/* Register Section - Right Side */
+.register-section {
+    flex: 0 0 40%;
+    background: #000000;
+    overflow-y: auto;
+    min-height: 70vh;
+}
+
+@media (min-width: 992px) {
+    .register-section {
+        min-height: auto;
+    }
+}
+
+/* Logo */
+.logo-img {
+    height: 48px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}
+
+/* Form Inputs */
+.form-input {
+    background-color: #1A1918 !important;
+    border: 1px solid #333333 !important;
+    color: #E5E5E5 !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    transition: all 0.2s ease !important;
+}
+
+.form-input::placeholder {
+    color: #999999 !important;
+    opacity: 1 !important;
+}
+
+.form-input:focus {
+    background-color: #1A1918 !important;
+    border-color: var(--gold-color) !important;
+    box-shadow: 0 0 0 2px rgba(244, 197, 66, 0.15) !important;
+    color: #FFFFFF !important;
+    outline: none !important;
+}
+
+.form-input:hover {
+    border-color: #404040 !important;
+}
+
+.form-text {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Password Toggle */
+.password-toggle {
+    color: #999999 !important;
+}
+
+.password-toggle:hover {
+    color: #FFFFFF !important;
+}
+
+/* Create Button */
+.create-button {
+    background-color: var(--gold-color) !important;
+    border: none !important;
+    color: #000000 !important;
+    box-shadow: 0 4px 15px rgba(244, 197, 66, 0.3);
+    transition: all 0.3s ease;
+}
+
+.create-button:hover {
+    background-color: var(--gold-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 197, 66, 0.4);
+}
+
+.create-button:active {
+    transform: translateY(0);
+}
+
+/* Links */
+.text-warning {
+    color: var(--gold-color) !important;
+}
+
+a.text-warning:hover {
+    color: var(--gold-hover) !important;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .background-section {
+        flex: 0 0 auto;
+        min-height: 30vh;
+    }
+    
+    .register-section {
+        flex: 1 1 auto;
+        min-height: auto;
+    }
+    
+    .glow-segment {
+        filter: blur(40px);
+    }
+    
+    .segment-1 { width: 250px; height: 250px; }
+    .segment-2 { width: 450px; height: 350px; }
+    .segment-3 { width: 300px; height: 220px; }
+    .segment-4 { width: 400px; height: 400px; }
+    .segment-5 { width: 250px; height: 250px; }
+}
+
+@media (max-width: 767.98px) {
+    .register-section {
+        padding: 20px 15px !important;
+    }
+    
+    .logo-img {
+        height: 40px;
+    }
+    
+    h1 {
+        font-size: 28px !important;
+    }
+    
+    .form-input {
+        padding: 10px 14px !important;
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .register-section {
+        padding: 15px 12px !important;
+    }
+    
+    .logo-img {
+        height: 35px;
+    }
+    
+    h1 {
+        font-size: 24px !important;
+    }
+    
+    .background-section {
+        min-height: 25vh;
+    }
+    
+    .form-input {
+        padding: 10px 12px !important;
+    }
+    
+    .create-button {
+        padding: 12px !important;
+        font-size: 14px !important;
+    }
+}
