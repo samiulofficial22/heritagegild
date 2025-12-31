@@ -471,6 +471,17 @@
             });
         });
 
+        // Event listeners for tab-line segments (make them clickable)
+        const lineSegments = document.querySelectorAll('.nav-tabs-line-segment');
+        lineSegments.forEach((segment, index) => {
+            segment.style.cursor = 'pointer';
+            segment.addEventListener('click', () => {
+                goToSlide(index);
+                stopAutoPlay();
+                startAutoPlay();
+            });
+        });
+
         // Initialize - set initial transform
         if (slidesContainer) {
             slidesContainer.style.transform = 'translateX(0%)';
@@ -830,6 +841,40 @@
         document.querySelectorAll('img[data-src]').forEach(img => {
             imageObserver.observe(img);
         });
+    }
+
+    // ============================================
+    // FAQ ACCORDION FUNCTIONALITY
+    // ============================================
+    function initFAQAccordion() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    }
+    
+    // Initialize FAQ accordion
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            initFAQAccordion();
+        });
+    } else {
+        initFAQAccordion();
     }
 
     // ============================================
