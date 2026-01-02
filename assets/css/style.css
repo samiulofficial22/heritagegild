@@ -385,22 +385,8 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 80px;
     padding-bottom: 80px;
     overflow: hidden;
-    background-image: url('../images/bitcoin-chart.jpg');
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
+    background-color: #000000;
     z-index: 1;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(11, 11, 11, 0.95) 0%, rgba(11, 11, 11, 0.85) 50%, rgba(11, 11, 11, 0.7) 100%);
-    z-index: -1;
 }
 
 @keyframes bgGlowPulse {
@@ -445,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-content {
     position: relative;
     z-index: 3;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     text-align: left;
 }
 
@@ -544,7 +530,54 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
-    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.btn-hero-login {
+    background: rgba(26, 26, 26, 0.8);
+    color: var(--color-text-primary);
+    border: 1px solid rgba(255, 215, 79, 0.3);
+    padding: 1rem 2.5rem;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 15px rgba(255, 215, 79, 0.1),
+                0 0 0 1px rgba(255, 215, 79, 0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-hero-login:hover {
+    background: rgba(26, 26, 26, 0.95);
+    border-color: rgba(255, 215, 79, 0.5);
+    box-shadow: 0 6px 20px rgba(255, 215, 79, 0.2),
+                0 0 0 1px rgba(255, 215, 79, 0.3);
+    color: var(--color-text-primary);
+    transform: translateY(-2px);
+}
+
+.btn-hero-investment {
+    background: var(--color-gold);
+    color: #000000;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 15px rgba(255, 215, 79, 0.2),
+                0 0 0 1px rgba(255, 215, 79, 0.1);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-hero-investment:hover {
+    background: var(--color-gold-light);
+    box-shadow: 0 6px 20px rgba(255, 215, 79, 0.3),
+                0 0 0 1px rgba(255, 215, 79, 0.2);
+    color: #000000;
+    transform: translateY(-2px);
 }
 
 .btn-white-cta {
@@ -615,8 +648,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-visual {
     position: relative;
-    height: 500px;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.hero-phone-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+    animation: floatPhone 6s ease-in-out infinite;
+}
+
+@keyframes floatPhone {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 .glow-effect {
@@ -812,6 +866,7 @@ section {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
+    margin: 50px 0;
 }
 
 .gold-calculator-card::before {
@@ -1138,7 +1193,7 @@ section {
 .ib-program-content {
     position: relative;
     z-index: 1;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
 }
 
 .ib-program-header {
@@ -1225,44 +1280,30 @@ section {
     padding: 2rem 0;
 }
 
-.ib-bull-container {
+.ib-partners-container {
     position: relative;
     width: 100%;
-    max-width: 500px;
-    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.ib-bull-image {
+.ib-partners-image {
     width: 100%;
-    height: 100%;
+    max-width: 600px;
+    height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 30px rgba(255, 215, 79, 0.3));
-    animation: floatAnimation 6s ease-in-out infinite;
+    display: block;
+    animation: floatPartners 6s ease-in-out infinite;
 }
 
-@keyframes floatAnimation {
+@keyframes floatPartners {
     0%, 100% {
         transform: translateY(0) scale(1);
     }
     50% {
         transform: translateY(-20px) scale(1.02);
     }
-}
-
-.ib-bull-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(ellipse, rgba(255, 215, 79, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(40px);
-    z-index: -1;
 }
 
 /* Responsive Design for IB Program Section */
@@ -1355,8 +1396,8 @@ section {
 }
 
 .project-card {
-    background: rgba(255, 215, 79, 0.05);
-    border: 2px solid var(--color-gold);
+    background: #000000;
+    border: 1px solid var(--color-gold);
     border-radius: 12px;
     overflow: hidden;
     transition: all var(--transition-normal);
@@ -1423,7 +1464,7 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: rgba(255, 215, 79, 0.05);
+    background: #000000;
 }
 
 .project-title {
@@ -1447,15 +1488,15 @@ section {
     background: rgba(255, 215, 79, 0.1);
     color: #FFFFFF;
     border: 1px solid var(--color-gold);
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     text-decoration: none;
     display: inline-block;
     text-align: center;
     transition: all var(--transition-normal);
-    width: 100%;
+    width: 50%;
     margin-top: auto;
 }
 
@@ -1716,14 +1757,13 @@ section {
 
 .crypto-journey-card:hover {
     background: linear-gradient(135deg, rgba(255, 215, 79, 0.15) 0%, rgba(255, 215, 79, 0.05) 100%);
-    border: 2px solid var(--color-gold);
+    border: 1px solid var(--color-gold);
     transform: translateY(-5px);
     box-shadow: 0 8px 35px rgba(255, 215, 79, 0.3);
 }
 
 .crypto-card-icon-wrapper {
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
 }
@@ -1736,7 +1776,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--color-border);
+    border: 1px solid var(--color-border);
     transition: all var(--transition-normal);
 }
 
@@ -1747,7 +1787,7 @@ section {
 
 .crypto-card-icon-circle i {
     font-size: 2rem;
-    color: var(--color-gold);
+    color: #FFFFFF;
 }
 
 .crypto-card-title {
@@ -2525,14 +2565,14 @@ section {
 
 .why-trust-icon-circle i {
     font-size: 1.5rem;
-    color: var(--color-gold);
+    color: #FFFFFF;
 }
 
 .why-trust-card-title {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: 400;
-    color: var(--color-gold);
+    color: #FFFFFF;
     margin-bottom: 1rem;
     text-align: left;
     line-height: 1.3;
@@ -3424,6 +3464,24 @@ section {
         height: 150px;
         top: -30px;
         right: -30px;
+    }
+    
+    .gold-card-calculator-wrap {
+        width: 100% !important;
+        padding: 1.5rem !important;
+    }
+    
+    .gold-card-calculator-wrap .gold-calculator-card.w-75 {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    #liveMarketChart {
+        height: 250px !important;
+    }
+    
+    .chart-container {
+        min-height: 250px;
     }
     
     .section-title {

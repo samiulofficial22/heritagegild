@@ -635,6 +635,157 @@
         initChart();
     }
 
+    // ============================================
+    // LIVE MARKET CHART
+    // ============================================
+    function drawLiveMarketChart() {
+        const canvas = document.getElementById('liveMarketChart');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const container = canvas.parentElement;
+        const width = canvas.width = container.offsetWidth - 32;
+        const height = canvas.height = container.offsetHeight - 32;
+
+        // Chart data for live market (price over time)
+        const data = [
+            { time: '00:00', price: 120 },
+            { time: '04:00', price: 125 },
+            { time: '08:00', price: 122 },
+            { time: '12:00', price: 128 },
+            { time: '16:00', price: 130 },
+            { time: '20:00', price: 127 },
+            { time: '24:00', price: 132 }
+        ];
+
+        const padding = { top: 30, right: 20, bottom: 50, left: 60 };
+        const chartWidth = width - padding.left - padding.right;
+        const chartHeight = height - padding.top - padding.bottom;
+        const maxValue = 140;
+        const minValue = 115;
+        const valueRange = maxValue - minValue;
+
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw background
+        ctx.fillStyle = '#0B0B0B';
+        ctx.fillRect(0, 0, width, height);
+
+        // Draw grid lines (horizontal)
+        ctx.strokeStyle = '#2A2A2A';
+        ctx.lineWidth = 1;
+        const gridLines = 5;
+        for (let i = 0; i <= gridLines; i++) {
+            const y = padding.top + (chartHeight / gridLines) * i;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, y);
+            ctx.lineTo(width - padding.right, y);
+            ctx.stroke();
+        }
+
+        // Draw grid lines (vertical)
+        for (let i = 0; i < data.length; i++) {
+            const x = padding.left + (chartWidth / (data.length - 1)) * i;
+            ctx.beginPath();
+            ctx.moveTo(x, padding.top);
+            ctx.lineTo(x, height - padding.bottom);
+            ctx.stroke();
+        }
+
+        // Draw Y-axis labels (price)
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        for (let i = 0; i <= gridLines; i++) {
+            const value = minValue + (valueRange / gridLines) * (gridLines - i);
+            const y = padding.top + (chartHeight / gridLines) * i;
+            ctx.fillText('$' + value.toFixed(0), padding.left - 10, y);
+        }
+
+        // Draw X-axis labels (time)
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        data.forEach((point, index) => {
+            const x = padding.left + (chartWidth / (data.length - 1)) * index;
+            ctx.fillText(point.time, x, height - padding.bottom + 10);
+        });
+
+        // Draw area fill
+        ctx.fillStyle = 'rgba(255, 215, 79, 0.1)';
+        ctx.beginPath();
+        data.forEach((point, index) => {
+            const x = padding.left + (chartWidth / (data.length - 1)) * index;
+            const y = padding.top + chartHeight - ((point.price - minValue) / valueRange) * chartHeight;
+            
+            if (index === 0) {
+                ctx.moveTo(x, padding.top + chartHeight);
+                ctx.lineTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        });
+        ctx.lineTo(width - padding.right, padding.top + chartHeight);
+        ctx.closePath();
+        ctx.fill();
+
+        // Draw chart line
+        ctx.strokeStyle = '#FFD54F';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+
+        data.forEach((point, index) => {
+            const x = padding.left + (chartWidth / (data.length - 1)) * index;
+            const y = padding.top + chartHeight - ((point.price - minValue) / valueRange) * chartHeight;
+            
+            if (index === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        });
+
+        ctx.stroke();
+
+        // Draw data points
+        ctx.fillStyle = '#FFD54F';
+        data.forEach((point, index) => {
+            const x = padding.left + (chartWidth / (data.length - 1)) * index;
+            const y = padding.top + chartHeight - ((point.price - minValue) / valueRange) * chartHeight;
+            
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw glow effect
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#FFD54F';
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        });
+    }
+
+    // Initialize live market chart
+    function initLiveMarketChart() {
+        const canvas = document.getElementById('liveMarketChart');
+        if (canvas) {
+            setTimeout(() => {
+                drawLiveMarketChart();
+            }, 100);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            initLiveMarketChart();
+        });
+    } else {
+        initLiveMarketChart();
+    }
+
     // Redraw chart on window resize
     let resizeTimeout;
     window.addEventListener('resize', () => {
@@ -642,6 +793,7 @@
         resizeTimeout = setTimeout(() => {
             drawGoldChart();
             drawAboutDashboardChart();
+            drawLiveMarketChart();
         }, 250);
     });
 
