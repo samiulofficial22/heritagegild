@@ -441,8 +441,7 @@ body {
 
 .header-left {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
+    align-items: center; 
 }
 
 .sidebar-toggle {
@@ -460,7 +459,17 @@ body {
 .sidebar-toggle:hover {
     background: var(--bg-tertiary);
 }
-
+.menu-text{
+    position: absolute;
+    width: 20px;
+    bottom: 8px;
+    background: #fff;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 50%;
+    color: #000;
+    right: 3px;
+}
 .page-title {
     font-size: 1.75rem;
     font-weight: 700;
@@ -681,7 +690,7 @@ body {
     font-size: 1.25rem;
     cursor: pointer;
     padding: 3px 10px;
-    border-radius: 5px;
+    border-radius: 50%;
     transition: all var(--transition-fast);
     position: relative;
     border: 1px solid #2A2928;
@@ -776,7 +785,6 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
 }
 
 .user-profile-name {
@@ -1170,7 +1178,7 @@ body {
 }
 
 .stat-card-left .stat-value {
-    font-size: 70px;
+    font-size: 50px;
 }
 
 .stat-subtitle {
@@ -1754,7 +1762,7 @@ body {
     .user-dropdown {
         min-width: 280px;
         max-width: 90vw;
-        right: 0;
+        left: 0;
         padding: var(--spacing-lg);
     }
     
@@ -1764,8 +1772,8 @@ body {
     }
     
     .avatar-user {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         font-size: 0.9rem;
     }
     
@@ -1854,6 +1862,14 @@ body {
 }
 
 @media (max-width: 576px) {
+    
+    .user-profile-name{
+        text-align: left;
+        font-size: 0.75rem;
+    }
+    .user-profile-email{
+        font-size: 0.75rem;
+    }
     .btn-buy-sell-yellow{
         margin: 0;
     }
