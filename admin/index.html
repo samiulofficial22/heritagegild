@@ -193,7 +193,10 @@
                         </button>
                     </div>
                     
-                    
+                    <!-- Notifications -->
+                    <button class="notification-bell-btn d-none d-md-block" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                    </button>
                     <!-- User Avatar -->
                     <div class="user-dropdown-wrapper">
                         <button class="user-avatar-btn" id="userAvatarBtn">
@@ -267,7 +270,7 @@
 
             <div class="header-right">
                 <!-- Notifications -->
-                <button class="notification-bell-btn" id="notificationBtn">
+                <button class="notification-bell-btn d-block d-md-none" id="notificationBtn">
                     <i class="fas fa-bell"></i>
                 </button>
                  <!-- Divider for mobile view only   -->
@@ -286,20 +289,20 @@
         <main class="main-content">
             <!-- Stats Cards Section -->
             <div class="stats-cards-section">
-                <div class="row g-4">
+                <div class="row">
                     <!-- Total Investment Card -->
                     <div class="col-lg-5 col-md-6">
                         <div class="stat-card stat-card-left">
                             <div class="stat-card-header">
                                 <h3 class="stat-title">Total Investment</h3>
                             </div>
-                            <div class="stat-card-body">
+                            <div class="">
                                 <div class="stat-value-wrapper">
                                     <div class="stat-value">$25,000.00</div>
                                     <div class="stat-value-separator"></div>
                                     <div class="currency-dropdown-wrapper">
                                         <button class="currency-dropdown-btn" id="currencyDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span class="currency-code">USD</span>
+                                            <span class="currency-code">Deposit</span>
                                             <i class="fas fa-chevron-down"></i>
                                         </button>
                                         <ul class="dropdown-menu currency-dropdown-menu" aria-labelledby="currencyDropdownBtn">
@@ -337,10 +340,10 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-7 p-0">
-                        <div class="row">
+                    <div class="col-lg-7">
+                        <div class="row g-md-3 g-2">
                              <!-- Gold Balance Card -->
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-6 col-lg-4 col-md-6">
                                 <div class="stat-card stat-card-right">
                                     <div class="stat-card-header">
                                         <h3 class="stat-title">Gold Balance</h3>
@@ -353,7 +356,7 @@
                             </div>
                         
                             <!-- Monthly ROI Card -->
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-6 col-lg-4 col-md-6">
                                 <div class="stat-card stat-card-right">
                                     <div class="stat-card-header">
                                         <h3 class="stat-title">Monthly ROI</h3>
@@ -366,7 +369,7 @@
                             </div>
                         
                             <!-- Referral Income Card -->
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-6 col-lg-4 col-md-6">
                                 <div class="stat-card stat-card-right">
                                     <div class="stat-card-header">
                                         <h3 class="stat-title">Referral Income</h3>
@@ -383,10 +386,10 @@
             </div>
 
             <!-- Recent Transactions and Chart Section -->
-            <div class="row g-4 mt-4">
+            <div class="row g-3 g-md-4">
                 <!-- Recent Transactions -->
-                <div class="col-lg-5 m-0">
-                    <div class="content-card content-card-bg">
+                <div class="col-lg-5">
+                    <div class="content-card content-card-bg drop_transc">
                         <div class="card-header card-header-space">
                             <div class="card-header-content">
                                 <h3 class="card-title">Recent Transactions</h3>
@@ -433,41 +436,30 @@
                                     </div>
                                     <div class="transaction-amount">$250.00</div>
                                 </div>
-                                
-                                <div class="transaction-item">
-                                    <div class="transaction-icon">
-                                        <i class="fas fa-dollar-sign"></i>
+
+                                <div class="d-none d-md-block">
+                                    <div class="transaction-item">
+                                        <div class="transaction-icon">
+                                            <i class="fas fa-dollar-sign"></i>
+                                        </div>
+                                        <div class="transaction-details">
+                                            <div class="transaction-type">Gold Buy</div>
+                                            <div class="transaction-date">Oct 9, 2025</div>
+                                        </div>
+                                        <div class="transaction-status">
+                                            <span class="status-badge status-complete">Complete</span>
+                                        </div>
+                                        <div class="transaction-amount">$250.00</div>
                                     </div>
-                                    <div class="transaction-details">
-                                        <div class="transaction-type">Gold Buy</div>
-                                        <div class="transaction-date">Oct 9, 2025</div>
-                                    </div>
-                                    <div class="transaction-status">
-                                        <span class="status-badge status-complete">Complete</span>
-                                    </div>
-                                    <div class="transaction-amount">$250.00</div>
                                 </div>
-                                
-                                <div class="transaction-item">
-                                    <div class="transaction-icon">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="transaction-details">
-                                        <div class="transaction-type">Gold Buy</div>
-                                        <div class="transaction-date">Oct 9, 2025</div>
-                                    </div>
-                                    <div class="transaction-status">
-                                        <span class="status-badge status-complete">Complete</span>
-                                    </div>
-                                    <div class="transaction-amount">$250.00</div>
-                                </div>
+                                 
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Gold Price Chart -->
-                <div class="col-lg-7 m-0">
+                <div class="col-lg-7">
                     <div class="content-card content-card-bg">
                         <div class="card-header card-header-space">
                             <div class="card-header-content">
@@ -528,7 +520,7 @@
             </div>
 
             <!-- Rank Journey Table -->
-            <div class="row mt-4">
+            <!-- <div class="row mt-4">
                 <div class="col-12">
                     <div class="content-card">
                         <div class="card-header">
@@ -633,7 +625,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </main>
     </div>
 
